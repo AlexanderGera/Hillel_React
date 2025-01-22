@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+</head>
+<body>
+
+<div id="root">
+
+</div>
+
+
+<script type="text/babel">
+
+    const domContainer = document.querySelector('#root');
+    const root = ReactDOM.createRoot(domContainer);
+
+    let pageTitle = <h1>Home work No. 1</h1>;
+    let someArray = ['1-erste', '2-zweite', '3-drite', '4-vierte', '5-funf'];
+    let someArray_1 = ['1-erste', '2-zweite', '3-drite', '4-vierte', '5-funf', {sixInObject: 6}];
+
+    let someObject = {
+        id: 1,
+        brand: "Audi",
+        model: "XXX",
+    }
+
+    let cars = [
+        {
+            id: 1,
+            brand: "Audi",
+            models: [
+                {
+                    id: 1,
+                    name: "A1",
+                    collection: [
+                        {
+                            id: 1,
+                            version: "Sportback",
+                            year: 2019,
+                            horsepower: 95,
+                            engine: 999
+                        },
+                        {
+                            id: 2,
+                            version: "Citycarver",
+                            year: 2019,
+                            horsepower: 95,
+                            engine: 999
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    name: "Q5",
+                    collection: [
+                        {
+                            id: 1,
+                            version: "FY 2021",
+                            year: 2021,
+                            horsepower: 299,
+                            engine: 1984
+                        },
+                        {
+                            id: 2,
+                            version: "Sportback",
+                            year: 2021,
+                            horsepower: 299,
+                            engine: 1984
+                        },
+                    ]
+                },
+                {
+                    id: 3,
+                    name: "TT",
+                    collection: [
+                        {
+                            id: 1,
+                            version: "Coupe",
+                            year: 2021,
+                            horsepower: 197,
+                            engine: 1984
+                        },
+                        {
+                            id: 2,
+                            version: "Roadster",
+                            year: 2021,
+                            horsepower: 197,
+                            engine: 1984
+                        }
+                    ]
+                },
+            ]
+        },
+
+        {
+            id: 2,
+            brand: "BMW",
+            models: [
+                {
+                    id: 1,
+                    name: "8 series",
+                    collection: [
+                        {
+                            id: 1,
+                            version: "G1X LCI",
+                            year: 2022,
+                            horsepower: 333,
+                            engine: 2998
+                        },
+                        {
+                            id: 2,
+                            version: "G1X",
+                            year: 2019,
+                            horsepower: 340,
+                            engine: 2998
+                        },
+                    ]
+                },
+                {
+                    id: 2,
+                    name: "X6",
+                    collection: [
+                        {
+                            id: 1,
+                            version: "G06 LCI",
+                            year: 2023,
+                            horsepower: 530,
+                            engine: 4395
+                        },
+                        {
+                            id: 2,
+                            version: "G06",
+                            year: 2020,
+                            horsepower: 286,
+                            engine: 2993
+                        }
+                    ]
+                },
+            ]
+        },
+    ];
+
+
+    root.render(
+        <React.Fragment>
+            {pageTitle}
+
+            <ul>
+
+                {cars.map((element, index) => {
+                    // {
+                    //не получилось отображать в виде "-ключь: значение",
+                    //не получилось сделать это через Object.key
+                    // }
+                    return (
+                        <ul>
+                            <li key={index}>{element.brand}</li>
+                            <li>{element.id}</li>
+
+                            {element.models.map((model) => {
+                                return (
+                                    <ul>
+                                        <li>{model.name}</li>
+                                        <ul>
+                                            {model.collection.map((description) => {
+                                                return (
+                                                    Object.keys(description).map((element) => {
+                                                        return (
+
+                                                            <li>{element}:{description[element]}</li>
+                                                        )
+                                                    })
+                                                )
+                                            })}
+
+                                        </ul>
+                                    </ul>
+
+
+                                )
+                            })}
+
+
+                        </ul>
+                    )
+                })
+                }
+
+            </ul>
+
+        </React.Fragment>
+    )
+    ;
+</script>
+</body>
+</html>
