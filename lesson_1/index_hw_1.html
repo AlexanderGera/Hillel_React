@@ -25,14 +25,6 @@
     const root = ReactDOM.createRoot(domContainer);
 
     let pageTitle = <h1>Home work No. 1</h1>;
-    let someArray = ['1-erste', '2-zweite', '3-drite', '4-vierte', '5-funf'];
-    let someArray_1 = ['1-erste', '2-zweite', '3-drite', '4-vierte', '5-funf', {sixInObject: 6}];
-
-    let someObject = {
-        id: 1,
-        brand: "Audi",
-        model: "XXX",
-    }
 
     let cars = [
         {
@@ -156,28 +148,34 @@
             {pageTitle}
 
             <ul>
-
                 {cars.map((element, index) => {
                     // {
-                    //не получилось отображать в виде "-ключь: значение",
+                    //Проблемы с которыми столкнулся:
+                    //1. рабнее работал с методами массивов, но с такими вложенностями не приходилось,
+                    // соответственно, было сложно с такой вложенностью.
+                    // Не получилось отображать в виде "-ключь: значение" - не додумался как это сделать.
                     //не получилось сделать это через Object.key
+                    //2. не совсем понял каким элементам списка присваивать аттрибут key.
+                    // Вы сказали родительским элементам списка. Я так и делал но Реакт ругается,
+                    //говорит что ему не хватает ключей.
+                    //3. не получилось разделить объекты в массиве collection
                     // }
                     return (
                         <ul>
                             <li key={index}>{element.brand}</li>
                             <li>{element.id}</li>
 
-                            {element.models.map((model) => {
+                            {element.models.map((model, index) => {
                                 return (
-                                    <ul>
+                                    <ul key={index}>
                                         <li>{model.name}</li>
                                         <ul>
                                             {model.collection.map((description) => {
                                                 return (
-                                                    Object.keys(description).map((element) => {
+                                                    Object.keys(description).map((element, index) => {
                                                         return (
 
-                                                            <li>{element}:{description[element]}</li>
+                                                            <li key={index}>{element}: {description[element]}</li>
                                                         )
                                                     })
                                                 )
@@ -185,12 +183,8 @@
 
                                         </ul>
                                     </ul>
-
-
                                 )
                             })}
-
-
                         </ul>
                     )
                 })
