@@ -1,0 +1,10 @@
+.table, tr, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 18px;
+}
+
+th, td {
+    min-width: 100px;
+}
