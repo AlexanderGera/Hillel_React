@@ -1,0 +1,17 @@
+.list__table {
+    margin: 0 auto;
+}
+.list__table, tr, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+td {
+width: 150px;
+}
+
+tr.active {
+    color: red;
+    font-weight: 600;
+}
