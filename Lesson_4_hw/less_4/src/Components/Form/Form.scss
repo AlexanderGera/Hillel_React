@@ -1,0 +1,14 @@
+.form {
+  width: fit-content;
+  background-color: azure;
+  display: flex;
+  flex-direction: column;
+  border: 1px dashed black;
+  padding: 30px;
+  margin-left: 40px;
+
+ input {
+   margin-bottom: 10px;
+ }
+}
+
